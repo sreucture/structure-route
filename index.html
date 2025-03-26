@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="ring">
+        <i style="--clr:#00ff0a;"></i>
+        <i style="--clr:#ff0057;"></i>
+        <i style="--clr:#fffd44;"></i>
+        <div class="login">
+            <div class="inputBx">
+                <input type="submit" value="Start" id="startButton">
+            </div>
+        </div>
+    </div>
+
+    <div id="newInterface" style="display: none;">
+        <button id="Trafic">
+            <span>Trafic</span>
+        </button>
+        <button id="forme">
+            <span>Couche de forme</span>
+        </button>
+        <button id="structureButton">
+            <span>Structure</span>
+        </button>
+    </div>
+
+    <div id="Traficinterface" style="display: none;"> 
+        <div class="container">
+            <h1>Calcul de NE</h1>
+            <form id="ne-form">
+              <label for="type-structure">type structure</label>  :</label>
+              <select id="type-structure" required>
+                <option value="Souple">Souple</option>
+                <option value="Semi-rigide">Semi-rigide</option>
+                <option value="Rigide">Rigide</option>
+              </select>
+              
+              <label for="npl">NPL (Nombre de Poids Lourds/jour) :</label>
+              <input type="number" id="npl" required>
+        
+              <label for="largeur-chaussee">Largeur de chaussée (m) :</label>
+              <input type="number" id="largeur-chaussee" step="0.1" required>
+        
+              <label for="cam">CAM (Coefficient d'Agressivité Moyen) :</label>
+              <input type="number" id="cam" step="0.1" required>
+        
+              <label for="taux-accroissement">Taux d'accroissement  :</label>
+              <input type="number" id="taux-accroissement" step="0.01" required>
+        
+              <label for="duree-vie">Durée de vie  :</label>
+              <select id="duree-vie" required>
+                <option value="10">courte</option>
+                <option value="15">moyenne</option>
+                <option value="20">Longue</option>
+              </select>
+        
+              <label for="type-voie">Type de voie :</label>
+              <select id="type-voie" required>
+                <option value="0.8">2x2 voies</option>
+                <option value="1">1x2 voies</option>
+              </select>
+        
+              <label for="cvc">CVC Répartition du trafic :</label>
+              <input type="number" id="cvc" step="0.5" required>
+
+              <button type="submit">Calculer NE</button>
+            </form>
+            <h2>Résultat :</h2>
+            <p id="resultat"></p>
+        </div>
+        <button id="back">
+            <span>⤆</span>
+        </button>
+    </div>
+
+    <div id="formeinterface" style="display: none;">
+        <div class="container">
+            <h1>Epaisseur de couche de forme</h1>
+            <div class="buttons">
+                <select id="Pj">
+                    <option value="">Sélectionnez Pj</option>
+                    <option value="P1">P1</option>
+                    <option value="P2">P2</option>
+                    <option value="P3">P3</option>
+                </select>
+                <select id="TPLi">
+                    <option value="">Sélectionnez TPLi</option>
+                    <option value="TPL1">TPL1</option>
+                    <option value="TPL2">TPL2</option>
+                    <option value="TPL3">TPL3</option>
+                    <option value="TPL4">TPL4</option>
+                    <option value="TPL5">TPL5</option>
+                    <option value="TPL6">TPL6</option>
+                </select>
+                <select id="Sti">
+                    <option value="">Sélectionnez Sti</option>
+                    <option value="St0">St0</option>
+                    <option value="St1">St1</option>
+                    <option value="St2">St2</option>
+                    <option value="St3">St3</option>
+                    <option value="St4">St4</option>
+                </select>
+            </div>
+            <div id="formestructure"></div>
+          </div>
+          <button id="structureforme">
+              <span>afficher la structure</span>
+          <button id="buttonback">
+              <span>⤆</span>
+          </button>
+          
+        <h2>
+            Si Sti >= Pj minimale
+            la couche de formen est pas obligatoire.
+            Dans ce cas on a: Pj=Sti=Pi
+        </h2>
+        <h2>
+            Si Sti < Pj minimale
+            Il faut prévoir une couche de forme afind atteindre la
+            portance  minimale exigée.
+            Dans ce cas on a: Pj=Pjminimale
+        </h2>
+      </div>
+    </div>
+
+    <div id="structureInterface" style="display: none;">
+      <div class="container">
+          <h1>Structure de Chaussée</h1>
+          <div class="buttons">
+              <select id="pSelect">
+                  <option value="">Sélectionnez P</option>
+                  <option value="P1">P1</option>
+                  <option value="P2">P2</option>
+                  <option value="P3">P3</option>
+                  <option value="P4">P4</option>
+              </select>
+              <select id="tplSelect">
+                  <option value="">Sélectionnez TPL</option>
+                  <option value="TPL1">TPL1</option>
+                  <option value="TPL2">TPL2</option>
+                  <option value="TPL3">TPL3</option>
+                  <option value="TPL4">TPL4</option>
+                  <option value="TPL5">TPL5</option>
+                  <option value="TPL6">TPL6</option>
+              </select>
+              <select id="lifeSelect">
+                  <option value="">Sélectionnez Durée de vie</option>
+                  <option value="Courte">Courte</option>
+                  <option value="Longue">Longue</option>
+              </select>
+              <select id="typeSelect">
+                <option value="">Sélectionnez Type de chaussée</option>
+                <option value="Souple">Souple</option>
+                <option value="Semi-rigide">Semi-rigide</option>
+                <option value="Rigide">Rigide</option>
+                <option value="Zone instable">Zone instable</option>
+              </select>
+              <div id="rigideSubMenu">
+                  <label for="rigideOptions">Zone climatique:</label>
+                  <select id="rigideOptions">
+                    <option value="Humide">Humide</option>
+                    <option value="Semi-humide">Semi-humide</option>
+                    <option value="Aride">Aride</option>
+                    <option value="Désertique">Désertique</option>
+                  </select>
+              </div>
+          </div>
+          <div id="structureOutput"></div>
+        </div>
+        <button id="showStructure">
+            <span>afficher la structure</span>
+        <button id="backButton">
+            <span>⤆</span>
+        </button>
+    </div>
+
+    <script defer src="main.js"></script>
+
+</body>
+</html>
