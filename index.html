@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="style.css">
-    <title>Login</title>
+    <title>structure route</title>
+    <link rel="shortcut icon" href="route.png" type="image/x-icon">
 </head>
 <body>
     <div class="ring">
@@ -21,6 +22,9 @@
     <div id="newInterface" style="display: none;">
         <button id="Trafic">
             <span>Trafic</span>
+        </button>
+        <button id="portance">
+            <span>Sti</span>
         </button>
         <button id="forme">
             <span>Couche de forme</span>
@@ -79,6 +83,141 @@
         </button>
     </div>
 
+    <div id="portanceInterface" style="display: none;">
+        <div class="container">
+           <h1>Module Sti</h1>
+           <button id="categorieSolButton">
+               <span>Catégorie de sol</span>
+           </button>
+           <button id="determinerStiButton">
+               <span>Déterminer Sti</span>
+            </button>
+       </div>
+       <button id="backStiButton">
+           <span>⤆</span>
+        </button>
+    </div>
+
+    <!-- Interface Déterminer Sti -->
+    <div id="determinerStiInterface" style="display: none;">
+        <div class="container">
+           <h1>Détermination de la valeur Sti</h1>
+           <form id="sti-form">
+                <div class="input-group">
+                    <label for="environnementClimatique">Environnement climatique :</label>
+                    <select id="environnementClimatique" required>
+                       <option value="Environnement-climatique">Environnement climatique</option>
+                       <option value="humide">Humide</option>
+                       <option value="semi-humide">Semi-humide</option>
+                       <option value="aride">Aride</option>
+                       <option value="desertique">Désertique</option>
+                   </select>
+                </div>
+            
+                <div class="input-group">
+                   <label for="drainage">Dispositifs de drainage :</label>
+                   <select id="drainage" required>
+                      <option value="Dispositifs-de-drainage">Dispositifs de drainage</option>
+                      <option value="type1">Type 1 (Drainage complet)</option>
+                      <option value="type2">Type 2 (Drainage partiel)</option>
+                   </select>
+                </div>
+                <div class="input-group">
+                   <label for="typeSol">Classe de sol :</label>
+                   <select id="typeSol" required>
+                       <option value="Classe-de-sol">Classe de sol</option>
+                       <option value="I">I - Sols rocheux/graveleux</option>
+                       <option value="II">II - Sols sableux</option>
+                       <option value="III">III - Sols limoneux</option>
+                       <option value="IV">IV - Sols argileux</option>
+                   </select>
+                </div>
+            
+                <div class="input-group">
+                    <label for="zoneInondable">Conditions hydriques :</label>
+                    <select id="zoneInondable" required>
+                        <option value="Conditions-hydriques">Conditions hydriques</option>
+                        <option value="non-inondable">Hors zone inondable / Nappe profonde (>1m)</option>
+                        <option value="inondable">Zone inondable / Nappe proche (<1m)</option>
+                   </select>
+               </div>
+            
+               <button type="submit" class="calculate-btn">
+                   <span>valeur de la portance Sti</span>
+               </button>
+            </form>
+        
+            <div id="stiResultContainer" style="display: none;">
+                <h2>Résultat :</h2>
+                <div class="result-box">
+                    <p id="stiResult"></p>
+                    <p id="stiExplication"></p>
+                    <p id="stiRecommandation"></p>
+                </div>
+                
+                <div id="stiTableContainer" style="display: none; margin-top: 20px;">
+                    <h3>Classification des sols selon la portance</h3>
+                    <table class="sti-table">
+                        <thead>
+                            <tr>
+                                <th>Indice</th>
+                                <th>St1</th>
+                                <th>St2</th>
+                                <th>St3</th>
+                                <th>St4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Essai à la plaque EV2 (bars)</td>
+                                <td>100 à 500</td>
+                                <td>500 à 1200</td>
+                                <td>1200 à 2000</td>
+                                <td>> 2000</td>
+                            </tr>
+                            <tr>
+                                <td>Déflexion sous 13T (1/100 de mm)</td>
+                                <td>> 200</td>
+                                <td>100 à 200</td>
+                                <td>60 à 100</td>
+                                <td>&lt; 60</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="CBRTableContainer" style="display: none; margin-top: 20px;">
+            <h3>Classification des sols selon la portance</h3>
+            <table class="CBR-table">
+                <thead>
+                    <tr>
+                        <th>Sti</th>
+                        <th>St0</th>
+                        <th>St1</th>
+                        <th>St2</th>
+                        <th>St3</th>
+                        <th>St4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>indice CBR</th>
+                        <th> ≤ 4</th>
+                        <th> ≥ 6</th>
+                        <th> ≥ 10</th>
+                        <th> ≥ 15</th>
+                        <th> ≥ 25</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button id="backDeterminerStiButton">
+            <span>⤆</span>
+        </button>
+    </div>
+    
+
     <div id="formeinterface" style="display: none;">
         <div class="container">
             <h1>Epaisseur de couche de forme</h1>
@@ -126,7 +265,6 @@
             portance  minimale exigée.
             Dans ce cas on a: Pj=Pjminimale
         </h2>
-      </div>
     </div>
 
     <div id="structureInterface" style="display: none;">
