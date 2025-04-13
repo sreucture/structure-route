@@ -217,6 +217,7 @@ button:hover {
 
 #structureOutput {
   padding: 20px;
+  color: #000;
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -538,4 +539,440 @@ h2 {
   flex: 1; 
   font-size: 0.8em;
   color: #000000;
+}
+/* إضافة استعلامات الوسائط للهاتف */
+@media (max-width: 768px) {
+  body {
+    background-size: auto;
+    overflow: auto;
+  }
+  
+  .ring {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .login {
+    width: 250px;
+  }
+  
+  .new-interface {
+    width: 90%;
+    height: auto;
+    padding: 15px;
+  }
+  
+  #Traficinterface, #formeinterface, #structureInterface {
+    width: 95%;
+    max-width: 95%;
+    padding: 10px;
+  }
+  
+  .container {
+    width: 100%;
+    padding: 10px;
+    margin: 20px auto;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  select, button {
+    width: 100%;
+  }
+  
+  #ne-form {
+    gap: 10px;
+  }
+  
+  #ne-form input, #ne-form select {
+    width: 100%;
+  }
+  
+  .rectangle {
+    width: 60px;
+    font-size: 0.8em;
+  }
+  
+  .blue {
+    width: calc(4 * 60px + 6 * 5px);
+  }
+  
+  h2 {
+    font-size: 1em;
+    padding: 10px;
+  }
+}
+
+/* إصلاحات عامة للهاتف */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input, select, button {
+  font-size: 16px !important; /* منع التكبير في iOS */
+}
+
+#portanceInterface {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 650px;
+  margin: 30px auto;
+  text-align: center;
+  position: relative;
+  display: none;
+  border: 2px solid #e0e0e0;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#portanceInterface h1 {
+  color: #2c3e50;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Boutons principaux */
+#categorieSolButton, #determinerStiButton {
+  margin: 20px auto;
+  padding: 20px 35px;
+  font-size: 1.2em;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 90%;
+  max-width: 400px;
+  display: block;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+#categorieSolButton:hover, #determinerStiButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+#categorieSolButton::before, #determinerStiButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2980b9, #27ae60);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#categorieSolButton:hover::before, #determinerStiButton:hover::before {
+  opacity: 1;
+}
+
+#categorieSolButton span, #determinerStiButton span {
+  position: relative;
+  z-index: 2;
+}
+
+#determinerStiInterface {
+  background-color: rgba(255, 255, 255, 0.98);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  max-width: 700px;
+  margin: 30px auto;
+  text-align: center;
+  position: relative;
+  display: none;
+  border: 2px solid #e0e0e0;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#determinerStiInterface h1 {
+  color: #2c3e50;
+  font-size: 2em;
+  margin-bottom: 25px;
+  font-weight: 600;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+#determinerStiInterface h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  border-radius: 3px;
+}
+
+/* Formulaire Sti */
+#sti-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #34495e;
+  font-size: 1em;
+  position: relative;
+  padding-left: 15px;
+}
+
+.input-group label::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.input-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  font-size: 1.05em;
+  background-color: #f9f9f9;
+  transition: all 0.3s;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 15px;
+}
+
+.input-group select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  background-color: #fff;
+}
+
+.calculate-btn {
+  background: linear-gradient(135deg, #e74c3c, #f39c12);
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 30px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.calculate-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(231, 76, 60, 0.4);
+}
+
+.calculate-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #c0392b, #d35400);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.calculate-btn:hover::before {
+  opacity: 1;
+}
+
+#stiResultContainer {
+  margin-top: 40px;
+  text-align: left;
+  animation: fadeIn 0.5s ease;
+}
+
+.result-box {
+  background-color: #f8fafd;
+  border-radius: 15px;
+  padding: 25px;
+  border-left: 6px solid #3498db;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.result-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(46, 204, 113, 0.05));
+  z-index: 0;
+}
+
+#stiResult {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+#stiExplication {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: #4a5568;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+#stiRecommandation {
+  font-size: 1em;
+  color: #2c3e50;
+  padding: 15px;
+  background-color: #e8f4ff;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+}
+
+/* Tableau de classification Sti */
+.sti-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  font-size: 0.95em;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.sti-table th, .sti-table td {
+  padding: 15px 20px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.sti-table th {
+  background: linear-gradient(135deg, #3498db, #2ecc71);
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9em;
+  letter-spacing: 0.5px;
+}
+
+.sti-table tr:nth-child(even) {
+  background-color: #f8fafd;
+}
+
+.sti-table tr:hover {
+  background-color: #f0f7ff;
+}
+
+.sti-table td:first-child {
+  font-weight: 600;
+  text-align: left;
+  background-color: #f0f7ff;
+  color: #2c3e50;
+}
+/* Tableau de classification CBR */
+.CBR-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 15px 0;
+  font-size: 0.9em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.CBR-table th, .sti-table td {
+  padding: 12px 15px;
+  text-align: center;
+  border: 1px solid #1a2bbe;
+}
+
+.sti-table th {
+  background-color: #2c7be5;
+  color: rgb(64, 31, 207);
+  font-weight: bold;
+}
+
+#determinerStiInterface {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  position: relative;
+  display: none;
+  border: 1px solid #e0e0e0;
+  max-height: 80vh; /* تحديد ارتفاع أقصى */
+  overflow-y: auto; /* تمكين التمرير الرأسي عند الحاجة */
+}
+
+/* تخصيص شريط التمرير */
+#determinerStiInterface::-webkit-scrollbar {
+  width: 8px; /* عرض شريط التمرير */
+}
+
+#determinerStiInterface::-webkit-scrollbar-track {
+  background: #f1f1f1; /* لون خلفية المسار */
+  border-radius: 4px;
+}
+
+#determinerStiInterface::-webkit-scrollbar-thumb {
+  background: #888; /* لون شريط التمرير */
+  border-radius: 4px;
+}
+
+#determinerStiInterface::-webkit-scrollbar-thumb:hover {
+  background: #555; /* لون شريط التمرير عند التحويم */
 }
